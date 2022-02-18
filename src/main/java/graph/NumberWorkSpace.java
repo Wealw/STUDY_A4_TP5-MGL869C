@@ -18,5 +18,9 @@ public class NumberWorkSpace extends WorkSpace {
         // This assigns the values on the way in
         if (!v.visited)
             v.VertexNumber = vertexCounter++;
+        else {
+            return;
+        }
+        System.out.println(v.name + " " + "visited :" + v.VertexNumber);
     }
 }

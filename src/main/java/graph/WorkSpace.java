@@ -19,4 +19,6 @@ public abstract class WorkSpace {
     
     @SuppressWarnings ("SpellCheckingInspection")
     public void checkNeighborAction(Vertex vsource, Vertex vtarget) {}
+    
+    public void printMethod() {}
 }

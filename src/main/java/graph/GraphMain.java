@@ -11,11 +11,12 @@ import java.io.IOException;
 
 public class GraphMain {
     
-    public static boolean UNDIRECTED = false;
-    public static boolean DIRECTED   = false;
-    public static boolean WEIGHTED   = true;
-    public static boolean DFS        = false;
-    public static boolean BFS        = false;
+    public static boolean UNDIRECTED  = false;
+    public static boolean DIRECTED    = false;
+    public static boolean WEIGHTED    = true;
+    public static boolean DFS         = false;
+    public static boolean BFS         = false;
+    public static int     workspaceId = 0;
     
     /**
      * Definition of arguments
@@ -23,6 +24,7 @@ public class GraphMain {
      * [1] Name of starting vertex, ex.  v0
      * [2] 1 = Directed, 2= Undirected
      * [3] Name of Benchmark file
+     * [4] Workspace ID
      */
     public static void main(String[] args) {
         // Step 0: Verify consistency of product configuration
@@ -38,6 +40,7 @@ public class GraphMain {
             case 1 -> DIRECTED = true;
             case 2 -> UNDIRECTED = true;
         }
+        workspaceId = Integer.parseInt(args[4]);
         // @DEBUG
         if (DFS)
             System.out.println("DFS Selected");
@@ -123,10 +126,18 @@ public class GraphMain {
         }
         g.display();
         // Call the methods here starting on the starting vertex
+        switch (workspaceId) {
+            case 1 -> g.GraphSearch(new NumberWorkSpace());
+            case 2 -> g.GraphSearch(new PrintWorkSpace());
+            case 3 -> g.GraphSearch(new PostOrderNumberWorkSpace());
+        }
+        /*
         if (BFS)
             g.BFS(args[1]);
         else
             g.DFS(args[1]);
+            
+         */
     } // main
     
     /**
@@ -139,7 +150,7 @@ public class GraphMain {
      */
     private static boolean validConfiguration(String[] args) {
         // Does not have the 4 arguments required
-        if (args.length != 4)
+        if (args.length != 5)
             return false;
         // Checks args[0] algorithm to execute
         int algorithm = Integer.parseInt(args[0]);
@@ -147,6 +158,10 @@ public class GraphMain {
             return false;
         // Note: No checks for args[1] here. Your DFS et BFS algorithms will verify that before executing
         // Checks args[2] for type of graph
+        int workspaceId = Integer.parseInt(args[4]);
+        if (workspaceId != 1 && workspaceId != 2 && workspaceId != 3) {
+            return false;
+        }
         int typeGraph = Integer.parseInt(args[2]);
         return typeGraph == 1 || typeGraph == 2;
         // Note: The existence of the file name is not verified here

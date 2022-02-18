@@ -226,7 +226,7 @@ public class Graph {
         // Step 2: traverse neighbors of each node
         for (Vertex v : vertices) {
             if (!v.visited) {
-                v.bftNodeSearch(new NumberWorkSpace());
+                v.bftNodeSearch(new PostOrderNumberWorkSpace());
             }
         }
         System.out.println();
@@ -260,12 +260,16 @@ public class Graph {
                 // two searches will be called
                 // @feature BFS
                 if (GraphMain.BFS) {
+                    System.out.println("BFS");
+                    w.printMethod();
                     // System.out.println("BFS " + v.name);
                     v.bftNodeSearch(w);
                 }
                 // ---
                 // @feature DFS
                 if (GraphMain.DFS) {
+                    System.out.println("DFS");
+                    w.printMethod();
                     // System.out.println("DFS " + v.name);
                     v.dftNodeSearch(w);
                 }
