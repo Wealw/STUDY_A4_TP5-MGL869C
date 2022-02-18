@@ -77,7 +77,6 @@ public class Vertex {
         w.preVisitAction(this);
         if (visited)
             return;
-        System.out.print(this.name);
         // Step 2: Mark as visited, put the unvisited neighbors in the queue
         //     and make the recursive call on the first element of the queue
         //     if there is such if not you are done
@@ -92,12 +91,14 @@ public class Vertex {
             if (!v.visited)
                 Queue.add(v);
         }
+        
         // while there is something in the queue
         while (Queue.size() != 0) {
             header = Queue.get(0);
             Queue.remove(0);
             header.bftNodeSearch(w);
         } // while there is a vertex pending to visit
+        
     } // of bfsNodeSearch
     // ---
     
@@ -109,7 +110,6 @@ public class Vertex {
         w.preVisitAction(this);
         if (visited)
             return;
-        System.out.print(this.name);
         // Step 2: else remember that we've visited and
         //         visit all neighbors
         visited = true;
