@@ -32,7 +32,6 @@ public class Edge extends Neighbor {
     
     
     public String toString() {
-        String result = " start=" + start.name + " end=" + end.name + " weight=" + weight;
-        return result;
+        return " start=" + start.name + " end=" + end.name + " weight=" + weight;
     }
 } // of Edge

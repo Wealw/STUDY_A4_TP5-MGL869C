@@ -1,6 +1,6 @@
 /**
  * Graph Search Patterns
- * Example implemeting searches
+ * Example implementing searches
  *
  * @author Roberto E. Lopez-Herrejon
  * ETS-LOGTI
@@ -17,27 +17,24 @@ import java.util.List;
  * Integrate these methods into your solution
  */
 public class Graph {
-    public static int                ch; // Character to read/write
     // **************************************************
     // Management of graph file for benchmarking
     // @feature BENCH
-    public        Reader             inFile; // File handler for reading
+    public Reader             inFile; // File handler for reading
     // Lists of vertices and edges
-    public        LinkedList<Vertex> vertices;
-    public        LinkedList<Edge>   edges;
+    public LinkedList<Vertex> vertices;
+    public LinkedList<Edge>   edges;
     
     /**
      * Constructor of the Graph class that initializes the vertices and edges.
      */
     public Graph() {
-        vertices = new LinkedList<Vertex>();
-        edges = new LinkedList<Edge>();
+        vertices = new LinkedList<>();
+        edges = new LinkedList<>();
     }
     
     /**
      * Opens the benchmark file
-     *
-     * @param FileName
      */
     public void openBenchmark(String FileName) {
         try {
@@ -51,8 +48,6 @@ public class Graph {
     
     /**
      * Attempts to close the benchmark file.
-     *
-     * @throws IOException
      */
     public void stopBenchmark() {
         try {
@@ -67,7 +62,7 @@ public class Graph {
     public int readNumber() throws IOException {
         int    index = 0;
         char[] word  = new char[80];
-        int    ch    = 0;
+        int    ch;
         ch = inFile.read();
         while (ch == 32)
             ch = inFile.read(); // skips extra whitespaces
@@ -117,7 +112,7 @@ public class Graph {
     /**
      * Adds an edge based from
      *
-     * @param the_edge
+     * @param the_edge An edge instance
      */
     public void addEdge(Edge the_edge) {
         Vertex start = the_edge.start;
@@ -134,8 +129,8 @@ public class Graph {
     /**
      * Finds a vertex given its name in the vertices list
      *
-     * @param theName
-     * @return
+     * @param theName The name of the vertex you're looking for
+     * @return The instance of the vertex
      */
     public Vertex findsVertex(String theName) {
         // if we are dealing with the root
@@ -171,9 +166,9 @@ public class Graph {
     
     /**
      * Your implementation of DFS
-     * Note that this methods displays each node in the traversal order
+     * Note that this method displays each node in the traversal order
      *
-     * @param vertexName
+     * @param vertexName The starting vertex of the DFS exploration
      */
     public void DFS(String vertexName) {
         List<Vertex> ordered_vertices = new LinkedList<>();
@@ -197,9 +192,9 @@ public class Graph {
     
     /**
      * Your implementation of BFS
-     * Note that this methods displays each node in the traversal order
+     * Note that this method displays each node in the traversal order
      *
-     * @param vertexName
+     * @param vertexName The starting vertex of the BFS exploration
      */
     public void BFS(String vertexName) {
         List<Vertex> ordered_vertices = new LinkedList<>();
@@ -229,7 +224,7 @@ public class Graph {
     /**
      * Performs a search on the graph, either in BFS or DFS mode.
      *
-     * @param w
+     * @param w The context of the method call
      */
     public void GraphSearch(WorkSpace w) {
         // Step 1: initialize visited member of all nodes
@@ -247,14 +242,12 @@ public class Graph {
                 // two searches will be called
                 // @feature BFS
                 if (GraphMain.BFS) {
-                    // @debug
                     // System.out.println("BFS " + v.name);
                     v.bftNodeSearch(w);
                 }
                 // ---
                 // @feature DFS
                 if (GraphMain.DFS) {
-                    // @debug
                     // System.out.println("DFS " + v.name);
                     v.dftNodeSearch(w);
                 }

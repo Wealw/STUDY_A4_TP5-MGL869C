@@ -1,6 +1,6 @@
 /**
  * Graph Search Patterns
- * Example implemeting searches
+ * Example implementing searches
  *
  * @author Roberto E. Lopez-Herrejon
  * ETS-LOGTI
@@ -8,7 +8,7 @@
 package graph;
 
 //supply template actions
-public class WorkSpace {
+public abstract class WorkSpace {
     public void init_vertex(Vertex v) {}
     
     public void preVisitAction(Vertex v) {}
@@ -17,5 +17,6 @@ public class WorkSpace {
     
     public void nextRegionAction(Vertex v) {}
     
+    @SuppressWarnings ("SpellCheckingInspection")
     public void checkNeighborAction(Vertex vsource, Vertex vtarget) {}
 }

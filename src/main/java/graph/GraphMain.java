@@ -82,7 +82,7 @@ public class GraphMain {
         // @feature WEIGHTED selected
         int[] weights = new int[num_edges];
         // Step 5: creates the vertices objects
-        int i = 0;
+        int i;
         for (i = 0; i < num_vertices; i++) {
             V[i] = new Vertex().assignName("v" + i);
             g.addVertex(V[i]);
@@ -104,7 +104,7 @@ public class GraphMain {
                 for (i = 0; i < num_edges; i++)
                     weights[i] = g.readNumber();
             } catch (IOException e) {
-                System.out.println("Error while reading the weigths");
+                System.out.println("Error while reading the weights");
                 System.exit(0);
             }
         }
@@ -142,15 +142,13 @@ public class GraphMain {
         if (args.length != 4)
             return false;
         // Checks args[0] algorithm to execute
-        int algorithm = Integer.valueOf(args[0]);
+        int algorithm = Integer.parseInt(args[0]);
         if (algorithm != 1 && algorithm != 2)
             return false;
         // Note: No checks for args[1] here. Your DFS et BFS algorithms will verify that before executing
         // Checks args[2] for type of graph
-        int typeGraph = Integer.valueOf(args[2]);
-        if (!(typeGraph == 1 || typeGraph == 2))
-            return false;
-        return true;
+        int typeGraph = Integer.parseInt(args[2]);
+        return typeGraph == 1 || typeGraph == 2;
         // Note: The existence of the file name is not verified here
     } // of validConfiguration
 } // of GraphMain

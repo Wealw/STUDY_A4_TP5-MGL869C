@@ -1,6 +1,6 @@
 /**
  * Graph Search Patterns
- * Example implemeting Numbering algorithm
+ * Example implementing Numbering algorithm
  *
  * @author Roberto E. Lopez-Herrejon
  * ETS-LOGTI
@@ -16,7 +16,7 @@ public class NumberWorkSpace extends WorkSpace {
     
     public void preVisitAction(Vertex v) {
         // This assigns the values on the way in
-        if (v.visited != true)
+        if (!v.visited)
             v.VertexNumber = vertexCounter++;
     }
 }

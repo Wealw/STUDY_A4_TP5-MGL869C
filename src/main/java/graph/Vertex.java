@@ -1,6 +1,6 @@
 /**
  * Graph Search Patterns
- * Example implemeting searches
+ * Example implementing searches
  *
  * @author Roberto E. Lopez-Herrejon
  * ETS-LOGTI
@@ -9,6 +9,7 @@ package graph;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Integrate these methods into your solution
@@ -16,7 +17,7 @@ import java.util.List;
 public class Vertex {
     
     // @feature BFS
-    static LinkedList<Vertex> Queue = new LinkedList<Vertex>();
+    static LinkedList<Vertex> Queue = new LinkedList<>();
     public List<Neighbor> neighbors;
     // Hint: You may add an attribute to indicate if the vertex has been visited or not
     public String         name;
@@ -29,7 +30,7 @@ public class Vertex {
     
     public Vertex() {
         name = null;
-        neighbors = new LinkedList<Neighbor>();
+        neighbors = new LinkedList<>();
     }
     
     public Vertex assignName(String name) {
@@ -43,10 +44,9 @@ public class Vertex {
     
     public boolean equals(Object o) {
         boolean result = false;
-        if (!(o instanceof Vertex))
+        if (!(o instanceof Vertex v))
             return result;
-        Vertex v = (Vertex) o;
-        if (v.name == this.name)
+        if (Objects.equals(v.name, this.name))
             result = true;
         return result;
     }
