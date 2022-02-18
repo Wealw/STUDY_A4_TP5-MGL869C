@@ -171,13 +171,26 @@ public class Graph {
      * @param vertexName The starting vertex of the DFS exploration
      */
     public void DFS(String vertexName) {
-        List<Vertex> ordered_vertices = new LinkedList<>();
-        Vertex       origin           = findsVertex(vertexName);
-        ordered_vertices.add(origin);
-        exploreChildren(origin, ordered_vertices);
-        for (Vertex vertex : ordered_vertices) {
-            System.out.print(vertex.name + " ");
+        System.out.println("DFS :");
+        Vertex startVertex = findsVertex(vertexName);
+        // If start vertex does not exist
+        if (startVertex==null) {
+            System.out.println("Start vertex does not exist");
+            return;
         }
+        // if there are no vertices in the graph, then finish
+        if ( vertices.size() == 0 ) return;
+        // Step 1. Initialization of vertices
+        for (Vertex v : vertices)
+            v.visited = false;
+        // Step 2: traverse neighbors of each node
+        for (Vertex v : vertices) {
+            if (!v.visited ) {
+                v.dftNodeSearch(new NumberWorkSpace());
+            }
+        }
+        System.out.println();
+        System.out.println("******************************************");
     } // of DFS
     
     private void exploreChildren(Vertex vertex, List<Vertex> visited_vertices) {
@@ -197,22 +210,27 @@ public class Graph {
      * @param vertexName The starting vertex of the BFS exploration
      */
     public void BFS(String vertexName) {
-        List<Vertex> ordered_vertices = new LinkedList<>();
-        ordered_vertices.add(findsVertex(vertexName));
-        int last_ordered_vertices_size = -1;
-        while (ordered_vertices.size() < vertices.size() && last_ordered_vertices_size != vertices.size()) {
-            last_ordered_vertices_size = ordered_vertices.size();
-            for (int i = 0; i < ordered_vertices.size(); i++) {
-                for (Edge edge : edges) {
-                    if (edge.start == ordered_vertices.get(i) && !ordered_vertices.contains(edge.end)) {
-                        ordered_vertices.add(edge.end);
-                    }
-                }
+        System.out.println("BFS :");
+        Vertex startVertex = findsVertex(vertexName);
+        // If start vertex does not exist
+        if (startVertex == null) {
+            System.out.println("Start vertex does not exist");
+            return;
+        }
+        // if there are no vertices in the graph, then finish
+        if (vertices.size() == 0)
+            return;
+        // Step 1. Initialization of vertices
+        for (Vertex v : vertices)
+            v.visited = false;
+        // Step 2: traverse neighbors of each node
+        for (Vertex v : vertices) {
+            if (!v.visited) {
+                v.bftNodeSearch(new NumberWorkSpace());
             }
         }
-        for (Vertex vertex : ordered_vertices) {
-            System.out.print(vertex.name + " ");
-        }
+        System.out.println();
+        System.out.println("******************************************");
     } // of BFS
     
     

@@ -18,15 +18,15 @@ public class Vertex {
     
     // @feature BFS
     static LinkedList<Vertex> Queue = new LinkedList<>();
-    public List<Neighbor> neighbors;
+    public List<Neighbor>     neighbors;
     // Hint: You may add an attribute to indicate if the vertex has been visited or not
-    public String         name;
+    public String             name;
     // Code to implement the DFS and BFS for vertex numbering
     // -----------------------------
     // @feature BFS  or feature DFS selected
-    public boolean visited;
+    public boolean            visited;
     // @feature NUMBER
-    public int VertexNumber;
+    public int                VertexNumber;
     
     public Vertex() {
         name = null;
@@ -45,7 +45,7 @@ public class Vertex {
     public boolean equals(Object o) {
         boolean result = false;
         if (!(o instanceof Vertex v))
-            return result;
+            return false;
         if (Objects.equals(v.name, this.name))
             result = true;
         return result;
@@ -77,6 +77,7 @@ public class Vertex {
         w.preVisitAction(this);
         if (visited)
             return;
+        System.out.print(this.name);
         // Step 2: Mark as visited, put the unvisited neighbors in the queue
         //     and make the recursive call on the first element of the queue
         //     if there is such if not you are done
@@ -108,6 +109,7 @@ public class Vertex {
         w.preVisitAction(this);
         if (visited)
             return;
+        System.out.print(this.name);
         // Step 2: else remember that we've visited and
         //         visit all neighbors
         visited = true;
