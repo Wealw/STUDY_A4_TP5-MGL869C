@@ -245,6 +245,9 @@ public class Graph {
      * @param w The context of the method call
      */
     public void GraphSearch(WorkSpace w) {
+        if (GraphMain.BFS) System.out.println("BFS");
+        if (GraphMain.DFS) System.out.println("DFS");
+        w.printMethod();
         // Step 1: initialize visited member of all nodes
         // if there are no vertices in the graph, then finish
         if (vertices.size() == 0)
@@ -260,16 +263,12 @@ public class Graph {
                 // two searches will be called
                 // @feature BFS
                 if (GraphMain.BFS) {
-                    System.out.println("BFS");
-                    w.printMethod();
                     // System.out.println("BFS " + v.name);
                     v.bftNodeSearch(w);
                 }
                 // ---
                 // @feature DFS
                 if (GraphMain.DFS) {
-                    System.out.println("DFS");
-                    w.printMethod();
                     // System.out.println("DFS " + v.name);
                     v.dftNodeSearch(w);
                 }
